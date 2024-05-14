@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+
+class Animal {
+    constructor(options) {
+        this.name = options.name
+        this.age = options.age
+        this.hasTail = options.hasTail
+    }
+}
+
+console.log(new Animal({name: 'alex'}));
+
+const animal = new Animal({
+    name: 'Bobik', 
+    age: 2, 
+    hasTail: true
+})
+
+console.log(animal);
+
+    </script>
+</body>
+</html>

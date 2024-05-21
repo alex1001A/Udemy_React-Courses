@@ -1,11 +1,10 @@
 import React from 'react'
 
+function Button({upCount}) {
 
-function Button({ onClick }) {
-
-    return (
-        <button onClick={onClick}>Click me</button>
-    )
+  return (
+    <button onClick={upCount}>Click to up</button>
+  )
 }
 
 export default Button

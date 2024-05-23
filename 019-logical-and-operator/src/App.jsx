@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Counter from "./components/Counter";
 import Button from "./components/Button";
+import ResetButton from "./components/ResetButton";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -23,10 +24,6 @@ export default function App() {
   // чтобы обновление состояние не происходило момендельно при монтировании компонента
   // и не вызывало рекурсии
 
-  const buttonStyle = {
-    background: "teal",
-  };
-
   return (
     <div className="App">
       <Counter count={count} />
@@ -34,11 +31,7 @@ export default function App() {
       <Button upCount={increment} />
       <Button upCount={increment} />
       <Button upCount={increment} />
-      <div>
-        <button style={buttonStyle} onClick={resetCount}>
-          Reset
-        </button>
-      </div>
+      {!!count && <ResetButton reset={resetCount}/>}
     </div>
   );
 }

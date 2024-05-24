@@ -11,11 +11,13 @@ function Posts() {
       .catch((error) => console.log(error.message))
   }, []);
 
-  console.log(posts);
-
   return (
     <div>
-      <Post />
+      {
+        posts.map((item) => {
+            return <Post key={item.id} item={item}/>
+        })
+      }
       
     </div>
   );

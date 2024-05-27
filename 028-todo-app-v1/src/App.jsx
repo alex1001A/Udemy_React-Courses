@@ -13,11 +13,19 @@
     setTodos([...todos, text])
   }
 
+  function deleteTodoHandler(id) {
+    setTodos(prevTodos => prevTodos.filter((_, index) => {
+      return index !== id
+    }))
+  }
+
+  console.log(todos);
+
   return (
     <div className="App">
       <h1>ToDo App</h1>
       <TodoForm addTodo={addTodoHandler}/>
-      <TodoList todos={todos}/>
+      <TodoList removeTask={deleteTodoHandler} todos={todos}/>
     </div>
   );
 }

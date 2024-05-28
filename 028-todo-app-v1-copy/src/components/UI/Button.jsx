@@ -1,8 +1,14 @@
 import React from 'react'
 
-function Button({onClick}) {
+import { IoTrashBinSharp } from "react-icons/io5";
+
+import s from './Button.module.css'
+
+function Button({id, deleteTodo}) {
   return (
-    <button onClick={onClick}>Add Task</button>
+    <button >
+
+    </button>
   )
 }
 

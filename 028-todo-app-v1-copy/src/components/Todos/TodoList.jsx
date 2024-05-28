@@ -2,21 +2,15 @@ import React, { useState } from "react";
 
 import Todo from "./Todo";
 
-function TodoList({ todos, deleteTodo }) {
+import s from './TodoList.module.css'
+
+function TodoList({ todos, deleteTodo, checkTodo }) {
   return (
-    <div
-      style={{
-        margin: "20px auto",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: '15px'
-      }}
-    >
+    <div className={s.todoList}>
       {!todos.length ? (
-        <h2>List is empty</h2>
+        <h1>List is empty</h1>
       ) : (
-        todos.map((item) => <Todo  key={item.id} deleteTodo={deleteTodo} item={item} />)
+        todos.map((todo) => <Todo checkTodo={checkTodo} deleteTodo={deleteTodo} key={todo.id} todo={todo} />)
       )}
     </div>
   );

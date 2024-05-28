@@ -1,14 +1,32 @@
-import React from 'react'
+import React from "react";
 
-function Todo({item, deleteTodo}) {
+import s from "./Todo.module.css";
+
+import { IoTrashBinSharp } from "react-icons/io5";
+import { BsArchiveFill } from "react-icons/bs";
+import { RiCheckLine } from "react-icons/ri";
+
+// import Button from '../UI/Button';
+
+function Todo({ todo, deleteTodo, checkTodo }) {
+
+  function addClasses(isCompleted, name, mainClass) {
+    return isCompleted ? `${name}` : `${mainClass}`;
+  }
 
   return (
-    <div style={{display: 'flex'}}>
-      <p>{item.text}</p>
-      <button style={{padding: '5px'}} onClick={() => deleteTodo(item.id)}>X</button>
-      <button style={{padding: '5px'}}>\/</button>
+    <div className={addClasses(todo.isCompleted, s.checkedTodo, s.todo)}>
+      <BsArchiveFill />
+      <p className={s.todoText}>{todo.text}</p>
+      <div className={s.buttonContainer}>
+        <IoTrashBinSharp
+          onClick={() => deleteTodo(todo.id)}
+          className={addClasses(todo.isCompleted, s.checkedButton, s.deleteButton)}
+        />
+        <RiCheckLine onClick={() => checkTodo(todo.id, todo.isCompleted)} className={addClasses(todo.isCompleted, s.checkedButton, s.checkButton)} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Todo
+export default Todo;

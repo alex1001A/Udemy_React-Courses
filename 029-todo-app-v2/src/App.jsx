@@ -6,6 +6,7 @@ import "./App.css";
 
 import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList";
+import TodosActions from './components/Todos/TodosActions'
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -39,16 +40,34 @@ export default function App() {
     );
   }
 
+  const resetTodosHandler = () => {
+    setTodos([])
+  }
+
+  const clearComletedTodosHandler = () => {
+    setTodos(todos.filter((todo) => {
+      if (todo.isCompleted === false) {
+        return todo
+      }
+      return todo
+    }))
+  }
+
   console.log(todos);
 
   return (
     <div className="App">
       <h1>ToDo App</h1>
       <TodoForm addTodo={addTodoHandler} />
+      <TodosActions 
+      resetTodos={resetTodosHandler}
+      clearComletedTodos={clearComletedTodosHandler}
+      />
       <TodoList
         toggleTodo={toggleTodoHandler}
         deleteTodo={deleteTodoHandler}
         todos={todos}
+        
       />
     </div>
   );

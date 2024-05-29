@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,12 +8,16 @@ import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList";
 
 export default function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   function setTodoDate() {
-    const date = new Date();
+    const date = new Date().toString();
 
-    return date.toString();
+    return date;
   }
 
   const addTodoHandler = (text) => {

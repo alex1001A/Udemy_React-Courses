@@ -46,29 +46,33 @@ export default function App() {
 
   const clearComletedTodosHandler = () => {
     setTodos(todos.filter((todo) => {
-      if (todo.isCompleted === false) {
-        return todo
-      }
-      return todo
+      return !todo.isCompleted
     }))
   }
 
-  console.log(todos);
+  const comletedTodosCount = todos.filter((todo) => todo.isCompleted).length
+
 
   return (
     <div className="App">
       <h1>ToDo App</h1>
       <TodoForm addTodo={addTodoHandler} />
-      <TodosActions 
-      resetTodos={resetTodosHandler}
-      clearComletedTodos={clearComletedTodosHandler}
-      />
+      { !!todos.length &&
+        <TodosActions 
+        completedTodosExist={!!comletedTodosCount}
+        // С помощью оператора "не-не (двойное отрицание)"" - 
+        // мы конвертируем нашу переменную/счетчик завершенных задач в логическое выражение,
+        // то есть на выходе получим "true" или "false".
+        resetTodos={resetTodosHandler}
+        clearComletedTodos={clearComletedTodosHandler}
+        />
+      }
       <TodoList
         toggleTodo={toggleTodoHandler}
         deleteTodo={deleteTodoHandler}
         todos={todos}
-        
       />
+      {!!comletedTodosCount ? <h2>You have completed {comletedTodosCount} {comletedTodosCount > 1 ? 'todos' : 'todo'}!</h2> : ''}
     </div>
   );
 }

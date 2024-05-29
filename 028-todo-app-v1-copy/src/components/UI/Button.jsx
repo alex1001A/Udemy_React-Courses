@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import { IoTrashBinSharp } from "react-icons/io5";
+import s from "./Button.module.css";
 
-import s from './Button.module.css'
+function Button(props) {
+  const { children, type } = props;
 
-function Button({id, deleteTodo}) {
   return (
-    <button >
-
+    <button {...props} className={s.button} type={type}>
+      {children}
     </button>
-  )
+  );
 }
 
-export default Button
+export default Button;

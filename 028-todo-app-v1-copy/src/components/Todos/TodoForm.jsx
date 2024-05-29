@@ -2,7 +2,12 @@ import React, { useState } from "react";
 
 import s from "./TodoForm.module.css";
 
+import Button from '../UI/Button'
+
+
+
 function TodoForm({ addTodo }) {
+
   const [text, setText] = useState("");
 
   const onSubmitHandler = (event) => {
@@ -21,9 +26,9 @@ function TodoForm({ addTodo }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button className={s.btn} type="submit">
+        <Button type="submit">
           Submit
-        </button>
+        </Button>
       </form>
     </div>
   );

@@ -40,37 +40,56 @@ export default function App() {
   const completeTodoHandler = (id, isCompleted) => {
     setTodos(
       todos.map((todo) => {
-        return id === todo.id ? { ...todo, isCompleted: !isCompleted } : { ...todo };
+        return id === todo.id
+          ? { ...todo, isCompleted: !isCompleted }
+          : { ...todo };
       })
     );
   };
 
   const resetTodosHandler = () => {
-    setTodos([])
-  }
+    setTodos([]);
+  };
 
-  const countCompletedTodos = todos.filter((todo) => todo.isCompleted === true).length
+  const countCompletedTodos = todos.filter(
+    (todo) => todo.isCompleted === true
+  ).length;
 
   const deleteCompletedTodosHandler = () => {
-    setTodos(todos.filter((todo) => {
-      return todo.isCompleted === false
-    }))
-  }
+    setTodos(
+      todos.filter((todo) => {
+        return todo.isCompleted === false;
+      })
+    );
+  };
 
   return (
     <div className="App">
-      <h1></h1>
+      <h1>ToDo App</h1>
       <TodoForm addTodo={addTodoHandler} />
-      <TodoActions 
-      deleteCompletedTodos={deleteCompletedTodosHandler}
-      resetTodos={resetTodosHandler}
-      countCompletedTodos={!!countCompletedTodos}
-      />
+      {!!todos.length ? (
+        <TodoActions
+          deleteCompletedTodos={deleteCompletedTodosHandler}
+          resetTodos={resetTodosHandler}
+          countCompletedTodos={!!countCompletedTodos}
+        />
+      ) : (
+        ""
+      )}
+
       <TodoList
         completeTodo={completeTodoHandler}
         deleteTodo={deleteTodoHandler}
         todos={todos}
       />
+      {!!countCompletedTodos ? (
+        <h1>
+          You have completed {countCompletedTodos}{" "}
+          {countCompletedTodos > 1 ? "todos" : "todo"}!
+        </h1>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

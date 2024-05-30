@@ -7,6 +7,7 @@ import "./App.css";
 import TodoForm from "./components/Todo/TodoForm";
 import TodoActions from "./components/Todo/TodoActions";
 import TodoList from "./components/Todo/TodoList";
+import Modal from "./components/UI/Modal";
 
 const setDate = () => {
   const date = new Date().toString();
@@ -17,10 +18,19 @@ export default function App() {
   const [todos, setTodos] = useState(
     JSON.parse(localStorage.getItem("todos")) || []
   );
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+  }, [todos]);ывамва
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const addTodoHandler = (text) => {
     const newTodo = {
@@ -90,6 +100,7 @@ export default function App() {
       ) : (
         ""
       )}
+      <Modal isOpen={() => modalIsOpen} />
     </div>
   );
 }

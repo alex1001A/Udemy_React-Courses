@@ -8,10 +8,6 @@ import s from "./Todo.module.css";
 
 function Todo({ todo, deleteTodo, completeTodo }) {
 
-  // const completeTodoHandler = () => {
-
-  // }
-
   return (
     <div className={todo.isCompleted ? `${s.todo} ${s.completedTodo}` : `${s.todo}`}>
       <RiArchive2Fill className={s.todoIcon}/>

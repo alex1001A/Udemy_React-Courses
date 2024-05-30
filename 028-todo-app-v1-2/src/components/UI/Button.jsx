@@ -1,9 +1,12 @@
 import React from "react";
 
-function Button({ children, title, disabled = false, onClick, countCompletedTodos }) {
+import s from "./Button.module.css";
+
+function Button(props) {
+  const { children, disabled = false, onClick, type } = props;
 
   return (
-    <button onClick={onClick} title={title} disabled={disabled}>
+    <button onClick={onClick} className={s.button} disabled={disabled} type={type}>
       {children}
     </button>
   );

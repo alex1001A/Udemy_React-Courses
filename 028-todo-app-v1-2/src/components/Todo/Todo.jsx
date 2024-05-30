@@ -6,13 +6,18 @@ import { RiCheckFill } from "react-icons/ri";
 
 import s from "./Todo.module.css";
 
-function Todo({ todo }) {
+function Todo({ todo, deleteTodo, completeTodo }) {
+
+  // const completeTodoHandler = () => {
+
+  // }
+
   return (
-    <div>
-      <RiArchive2Fill />
-      <p>{todo.text}</p>
-      <MdDelete />
-      <RiCheckFill />
+    <div className={todo.isCompleted ? `${s.todo} ${s.completedTodo}` : `${s.todo}`}>
+      <RiArchive2Fill className={s.todoIcon}/>
+      <p className={s.todoText}>{todo.text}</p>
+      <MdDelete onClick={() => deleteTodo(todo.id)} className={s.deleteIcon}/>
+      <RiCheckFill onClick={() => completeTodo(todo.id, todo.isCompleted)} className={s.checkIcon}/>
     </div>
   );
 }

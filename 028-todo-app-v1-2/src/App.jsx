@@ -19,8 +19,8 @@ export default function App() {
   );
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos))
-  });
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodoHandler = (text) => {
     const newTodo = {
@@ -33,12 +33,44 @@ export default function App() {
     setTodos([...todos, newTodo]);
   };
 
+  const deleteTodoHandler = (id) => {
+    setTodos(todos.filter((todo) => id !== todo.id));
+  };
+
+  const completeTodoHandler = (id, isCompleted) => {
+    setTodos(
+      todos.map((todo) => {
+        return id === todo.id ? { ...todo, isCompleted: !isCompleted } : { ...todo };
+      })
+    );
+  };
+
+  const resetTodosHandler = () => {
+    setTodos([])
+  }
+
+  const countCompletedTodos = todos.filter((todo) => todo.isCompleted === true).length
+
+  const deleteCompletedTodosHandler = () => {
+    setTodos(todos.filter((todo) => {
+      return todo.isCompleted === false
+    }))
+  }
+
   return (
     <div className="App">
       <h1></h1>
       <TodoForm addTodo={addTodoHandler} />
-      <TodoActions />
-      <TodoList todos={todos} />
+      <TodoActions 
+      deleteCompletedTodos={deleteCompletedTodosHandler}
+      resetTodos={resetTodosHandler}
+      countCompletedTodos={!!countCompletedTodos}
+      />
+      <TodoList
+        completeTodo={completeTodoHandler}
+        deleteTodo={deleteTodoHandler}
+        todos={todos}
+      />
     </div>
   );
 }

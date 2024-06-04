@@ -1,8 +1,14 @@
 import courses from "../data/courses";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+
+import queryString from "query-string";
 
 function Courses() {
+  const location = useLocation();
+
+  console.log(location);
+
   return (
     <div>
       <h1>Courses</h1>

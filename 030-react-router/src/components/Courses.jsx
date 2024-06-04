@@ -9,7 +9,7 @@ function Courses() {
       {courses.map((item) => {
         return (
           <div key={item.id}>
-            <NavLink className="courseLink" item={item} to={item.slug}>
+            <NavLink className="courseLink" to={item.slug}>
               {item.title}
             </NavLink>
           </div>

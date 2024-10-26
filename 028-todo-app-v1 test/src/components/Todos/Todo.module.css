@@ -1,0 +1,33 @@
+.todo {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid gray;
+  border-radius: 10px;
+  min-width: 400px;
+  padding: 20px;
+  font-size: 25px;
+  transition: all 0.5s ease;
+}
+
+.todoComplete {
+  opacity: 0.5;
+}
+
+.todoIcon {
+  margin-right: 20px;
+}
+
+.todoButtons {
+  display: flex;
+  gap: 20px;
+}
+
+.todoButtons svg {
+  transition: all 0.5s ease;
+}
+
+.todoButtons svg:hover {
+  transform: scale(0.8);
+}
